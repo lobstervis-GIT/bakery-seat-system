@@ -1,0 +1,20 @@
+name = "bakery-seat-system"
+main = "src/worker.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bakery-seat-db"
+database_id = ""  # 部署時填入
+
+[durable_objects]
+bindings = [
+  { name = "SEAT_COORDINATOR", class_name = "SeatCoordinator" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SeatCoordinator"]
