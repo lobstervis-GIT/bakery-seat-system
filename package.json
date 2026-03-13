@@ -1,0 +1,19 @@
+{
+  "name": "bakery-seat-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "db:init": "wrangler d1 execute bakery-seat-db --local --file=db/schema.sql",
+    "db:migrate": "wrangler d1 execute bakery-seat-db --file=db/schema.sql"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0",
+    "wrangler": "^3.22.0"
+  }
+}
