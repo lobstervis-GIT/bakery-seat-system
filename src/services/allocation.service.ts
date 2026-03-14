@@ -1,24 +1,19 @@
 // allocation.service.ts
 
-export class AllocationService {
-  constructor() {}
+import { StoreConfig } from '../interfaces/store-config.interface';
+import { StoreModel } from '../models/store.model';
 
-  allocateSeat(shopType: string, partySize: number): Seat | null {
-    // 根據 shopType 實作不同的劃位邏輯
-    switch (shopType) {
-      case 'bakery':
-        // 麵包店劃位邏輯
-        break;
-      case 'cafe':
-        // 咖啡廳劃位邏輯
-        break;
-      case 'restaurant':
-        // 餐廳劃位邏輯
-        break;
-      default:
-        // 預設劃位邏輯
-        break;
-    }
-    return null; // 暫時回傳 null
+export class AllocationService {
+  private storeConfig: StoreConfig;
+  private storeModel: StoreModel;
+
+  constructor(config: StoreConfig) {
+    this.storeConfig = config;
+    this.storeModel = new StoreModel(config);
+  }
+
+  allocateSeat(): number {
+    // 根據 storeConfig 決定劃位邏輯
+    return 0; // 預留位置
   }
 }
