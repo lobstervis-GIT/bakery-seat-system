@@ -2,15 +2,22 @@ import abc
 
 class Strategy(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def allocate_seat(self, shop_type: str) -> str:
+    def arrange_seat(self, shop_type: str) -> str:
         pass
 
+class ConcreteStrategyA(Strategy):
+    def arrange_seat(self, shop_type: str) -> str:
+        return f"Arranging seats for {shop_type}"
+
+class ConcreteStrategyB(Strategy):
+    def arrange_seat(self, shop_type: str) -> str:
+        return f"Arranging seats for {shop_type}"
+
 class StrategyFactory:
-    def __init__(self):
-        self.strategies = {}
-
-    def register_strategy(self, shop_type: str, strategy: Strategy):
-        self.strategies[shop_type] = strategy
-
-    def get_strategy(self, shop_type: str) -> Strategy:
-        return self.strategies.get(shop_type)
+    def create_strategy(self, shop_type: str) -> Strategy:
+        if shop_type == "A":
+            return ConcreteStrategyA()
+        elif shop_type == "B":
+            return ConcreteStrategyB()
+        else:
+            raise ValueError("Invalid shop type")
