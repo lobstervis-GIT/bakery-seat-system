@@ -1,3 +1,3 @@
 interface SeatingStrategy {
-  execute(guests: number, availableSeats: Seat[]): Seat[]
+  assignSeat(customer: Customer, availableSeats: Seat[]): Seat | null;
 }
