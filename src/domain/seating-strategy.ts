@@ -1,3 +1,3 @@
 interface SeatingStrategy {
-  assignSeat(seat: Seat): boolean;
+  assignSeat(seatManagement: SeatManagement): Seat | null;
 }
