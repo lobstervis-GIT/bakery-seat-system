@@ -1,3 +1,3 @@
 interface SeatingStrategy {
-  assignSeat(customer: Customer, seats: Seat[]): Seat | null;
+  assignSeat(partySize: number): Seat | null;
 }
