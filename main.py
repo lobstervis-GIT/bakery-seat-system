@@ -1,20 +1,14 @@
 import json
 
 # 讀取設定檔
-with open('config.json', 'r') as f:
+with open("config.json", "r") as f:
     config = json.load(f)
 
-store_type = config['store_type']
-seat_capacity = config['seat_capacity']
+# 根據設定檔調整行為
+seat_type = config.get("seat_type", "chair") # 預設為 chair
 
-# 根據店家類型調整系統行為
-if store_type == 'bakery':
-    print("這是麵包店")
-elif store_type == 'cafe':
-    print("這是咖啡店")
-else:
-    print("這是其他類型的商店")
+print(f"座位類型: {seat_type}")
 
-print(f"座位數量：{seat_capacity}")
+# 這裡可以根據 config 裡的設定來調整其他的行為，例如預約規則等等
 
-# 這裡可以加入更多根據設定檔調整系統行為的程式碼
+print("系統初始化完成")
