@@ -1,11 +1,16 @@
-class StrategyFactory:
-    def __init__(self, strategy_type):
-        self.strategy_type = strategy_type
+import abc
 
-    def create_strategy(self):
-        if self.strategy_type == 'bakery':
-            return BakeryStrategy()
-        elif self.strategy_type == 'restaurant':
-            return RestaurantStrategy()
-        else:
-            raise ValueError('Invalid strategy type')
+class Strategy(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def allocate_seat(self, shop_type: str) -> str:
+        pass
+
+class StrategyFactory:
+    def __init__(self):
+        self.strategies = {}
+
+    def register_strategy(self, shop_type: str, strategy: Strategy):
+        self.strategies[shop_type] = strategy
+
+    def get_strategy(self, shop_type: str) -> Strategy:
+        return self.strategies.get(shop_type)
