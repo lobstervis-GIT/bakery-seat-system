@@ -1,19 +1,16 @@
 // allocation.service.ts
 
-import { StoreConfig } from '../interfaces/store-config.interface';
-import { StoreModel } from '../models/store.model';
+import { AllocationStrategy } from '../interfaces/allocation-strategy.interface';
+import { FIFOAllocationStrategy } from '../strategies/fifo-allocation.strategy';
 
 export class AllocationService {
-  private storeConfig: StoreConfig;
-  private storeModel: StoreModel;
+  private allocationStrategy: AllocationStrategy;
 
-  constructor(config: StoreConfig) {
-    this.storeConfig = config;
-    this.storeModel = new StoreModel(config);
+  constructor() {
+    this.allocationStrategy = new FIFOAllocationStrategy();
   }
 
-  allocateSeat(): number {
-    // 根據 storeConfig 決定劃位邏輯
-    return 0; // 預留位置
+  allocateSeat(storeConfig: any): any {
+    return this.allocationStrategy.allocate(storeConfig);
   }
 }
