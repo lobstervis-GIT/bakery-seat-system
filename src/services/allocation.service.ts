@@ -1,16 +1,20 @@
 // allocation.service.ts
 
-import { AllocationStrategy } from '../interfaces/allocation-strategy.interface';
-import { FIFOAllocationStrategy } from '../strategies/fifo-allocation.strategy';
+import { StoreConfig } from "../interfaces/store-config.interface";
+import { AllocationStrategy } from "../interfaces/allocation-strategy.interface";
 
 export class AllocationService {
-  private allocationStrategy: AllocationStrategy;
+    private strategy: AllocationStrategy;
 
-  constructor() {
-    this.allocationStrategy = new FIFOAllocationStrategy();
-  }
+    constructor(strategy: AllocationStrategy) {
+        this.strategy = strategy;
+    }
 
-  allocateSeat(storeConfig: any): any {
-    return this.allocationStrategy.allocate(storeConfig);
-  }
+    setStrategy(strategy: AllocationStrategy) {
+        this.strategy = strategy;
+    }
+
+    allocateSeat(storeConfig: StoreConfig): Seat | null {
+        return this.strategy.allocateSeat(storeConfig);
+    }
 }
