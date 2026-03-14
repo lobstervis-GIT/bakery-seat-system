@@ -1,4 +1,4 @@
-import { Seat } from './seat.interface';
+import { Seat } from './seat.model';
 
 export class SeatService {
   private seats: Seat[];
