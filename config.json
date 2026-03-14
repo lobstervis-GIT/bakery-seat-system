@@ -1,0 +1,14 @@
+{
+  "bakery": {
+    "seat_types": ["table", "counter"],
+    "max_seats": 20
+  },
+  "cafe": {
+    "seat_types": ["table", "booth", "outdoor"],
+    "max_seats": 30
+  },
+  "restaurant": {
+    "seat_types": ["table", "private_room"],
+    "max_seats": 50
+  }
+}
